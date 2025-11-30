@@ -18,6 +18,7 @@ export const pureAddUser = (
     } else {
         addUserCallback(name);
         setName("");
+        setError("");
     }
    
 }
@@ -25,13 +26,15 @@ export const pureAddUser = (
 export const pureOnBlur = (name: UserType["name"], setError:  Dispatch<SetStateAction<string>>) => { 
     if(name.length === 0) {
         setError("Name empty");
+    } else {
+        setError("");
     }
 }
 
 export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: () => void) => { 
-    if(e.key === "enter") {
+    if(e.key === "Enter") {
         addUser();
-    }
+    }   
 }
 
 // более простой и понятный для новичков
@@ -45,13 +48,14 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     // деструктуризация пропсов
     const [name, setName] = useState<string>('');
     const [error, setError] = useState<string>('');
-
+    
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { 
-        const trimmName = e.currentTarget.value.trim();
-        if(trimmName) {
-            setName(trimmName);
+        
+        if(e.currentTarget.value !== '') {
+            setName(e.currentTarget.value);
+            setError("");
         } else {
-            error && setError('');
+            error && setError("Error");
         }
     }
     const addUser = () => {
