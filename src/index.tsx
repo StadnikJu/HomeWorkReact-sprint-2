@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+// import './index.css'
 import App from './s1-main/App'
 import reportWebVitals from './reportWebVitals'
 import store from './s2-homeworks/hw10/bll/store'
