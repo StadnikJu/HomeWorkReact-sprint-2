@@ -14,7 +14,13 @@
 }
 
 .secondary {
+    border: 1px solid #06c;
+    border-radius: 3px;
+    padding: 5px 24px;
+    width: 128px;
+    height: 30px;
     color: #06c;
+    background-color: white;
 }
 
 .default {
