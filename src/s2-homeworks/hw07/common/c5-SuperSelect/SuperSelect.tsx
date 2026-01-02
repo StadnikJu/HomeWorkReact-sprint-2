@@ -1,4 +1,4 @@
-import React, { SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent } from 'react';
+import React, { SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent, useState, useRef, useEffect } from 'react';
 import s from './SuperSelect.module.css';
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>,HTMLSelectElement>;
@@ -8,36 +8,59 @@ type SuperSelectPropsType = DefaultSelectPropsType & {
     onChangeOption?: (option: any) => void
 }
 
-const SuperSelect: React.FC<SuperSelectPropsType> = ({options, className, onChange, onChangeOption, ...restProps}) => {
+const SuperSelect: React.FC<SuperSelectPropsType> = ({options, className, onChange, onChangeOption, value, ...restProps}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const selectRef = useRef<HTMLDivElement>(null);
+
+    const selectedOption = options?.find(o => o.id === value);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const onClickOption = (id: any) => {
+        onChangeOption?.(id);
+        setIsOpen(false);
+    };
+
     const mappedOptions: any[] = options
         ? options.map((o) => (
-              <option
+              <div
                   id={'hw7-option-' + o.id}
                   className={s.option}
                   key={o.id}
-                  value={o.id}
+                  onClick={() => onClickOption(o.id)}
               >
                   {o.value}
-              </option>
+              </div>
           ))
-        : [] // map options with key
+        : [];
 
-    const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
-        onChange?.(e);
-        onChangeOption?.(Number(e.currentTarget.value));
-    }
-
-    const finalSelectClassName = s.select + (className ? ' ' + className : '')
+    const finalSelectClassName = s.select + (className ? ' ' + className : '');
 
     return (
-        <select
-            className={finalSelectClassName}
-            onChange={onChangeCallback}
-            {...restProps}
-        >
-            {mappedOptions}
-        </select>
-    )
+        <div className={s.selectWrapper} ref={selectRef}>
+            <div
+                id={restProps.id}
+                className={finalSelectClassName}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <span>{selectedOption?.value || 'Select...'}</span>
+            </div>
+            {isOpen && (
+                <div className={s.options}>
+                    {mappedOptions}
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default SuperSelect

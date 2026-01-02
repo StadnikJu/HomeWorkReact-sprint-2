@@ -6,8 +6,9 @@ import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import User from './User'
 
 /*
-* 1 - дописать типы и логику (сортировка по имени, фильтрация по совершеннолетию) homeWorkReducer, проверить тестом
-* 2 - дописать компоненту User
+* 1 - дописать типы и логику (сортировка по имени, фильтрация по совершеннолетию) homeWorkReducer, 
+проверить тестом // +
+* 2 - дописать компоненту User // +
 * 3 - сделать стили в соответствии с дизайном
 * */
 
@@ -18,7 +19,6 @@ export type UserType = {
 }
 
 const initialPeople: UserType[] = [
-    // студенты могут поменять имя/возраст/количество объектов, _id должны быть целочисленные
     {_id: 0, name: 'Кот', age: 3},
     {_id: 1, name: 'Александр', age: 66},
     {_id: 2, name: 'Коля', age: 16},
@@ -28,16 +28,13 @@ const initialPeople: UserType[] = [
 ]
 
 const HW8 = () => {
-    const [people, setPeople] = useState<UserType[]>(initialPeople)
-    const [currentSort, setCurrentSort] = useState('')
-
-    const finalPeople = people.map((u: UserType) => <User key={u._id} u={u}/>)
+    const [people, setPeople] = useState<UserType[]>(initialPeople);
+    const [currentSort, setCurrentSort] = useState('');
+    const finalPeople = people.map((u: UserType) => <User key={u._id} u={u}/>);
 
     const sortUp = () => {
-        setPeople(
-            homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'})
-        ) // в алфавитном порядке a.name > b.name
-        setCurrentSort('up')
+        setPeople(homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'})); 
+        setCurrentSort('up');
     }
 
     const sortDown = () => {
