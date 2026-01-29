@@ -1,14 +1,52 @@
 .buttonsContainer {
+    display: flex;
+    gap: 20px;
+    border-radius: 3px;
+    width: 84px;
+    height: 30px;
+    color: white;
 }
 
-.clock {
+button:disabled {
+    color: white !important;
 }
+
+.default {
+    background-color: #06c; 
+    color: white;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}
+
+.secondary {
+    background-color: gray;
+    color: white;
+}
+
+.disabled {
+    background-color: lightgray;
+    color: white;
+    cursor: not-allowed;
+}
+
 
 .watch {
+    font-weight: 400;
+    font-size: 20px;
+    color: #000;
+   
 }
 
 .watch strong {
+    font-weight: 600;
 }
 
 .more {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-top: 8px;
 }
