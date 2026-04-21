@@ -25,19 +25,16 @@ export type AffairType = {
     priority: AffairPriorityType;
 }
 
-
-// constants
 const defaultAffairs: AffairType[] = [ 
-    {_id: 1, name: 'React', priority: 'high'}, // студенты могут изменить содержимое name и количество элементов в массиве, ...priority не менять!
+    {_id: 1, name: 'React', priority: 'high'}, 
     {_id: 2, name: 'anime', priority: 'low'},
     {_id: 3, name: 'games', priority: 'low'},
     {_id: 4, name: 'work', priority: 'high'},
     {_id: 5, name: 'html & css', priority: 'middle'},
 ]
 
-// pure helper functions
 export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => { 
-    let newAffairs = filter === 'all' ?affairs : affairs.filter(a => a.priority === filter);
+    let newAffairs = filter === 'all' ?  affairs : affairs.filter(a => a.priority === filter);
     return newAffairs;
 }
 export const deleteAffair = (affairs: AffairType[], _id: AffairType['_id']): AffairType[] => { 

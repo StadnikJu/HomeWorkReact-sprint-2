@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction } from 'react'
-import Affair from './affair/Affair'
-import {AffairType, FilterType} from '../HW2'
-import s from './Affairs.module.css'
+import React, { Dispatch, SetStateAction } from 'react';
+import Affair from './affair/Affair';
+import {AffairType, FilterType} from '../HW2';
+import s from './Affairs.module.css';
 
 type AffairsPropsType = {
     data: AffairType[];
@@ -31,7 +31,7 @@ function Affairs(props: AffairsPropsType) {
 
     const mappedAffairs = props.data.map((a: AffairType) => (
         <Affair
-            key={a._id} // кеи ОБЯЗАТЕЛЬНЫ в 99% - так что лучше их писать всегда при создании компонент в мапе
+            key={a._id} 
             affair={a}
             deleteAffairCallback={props.deleteAffairCallback}
         />
