@@ -6,7 +6,7 @@ type DefaultSelectPropsType =
 
 type OptionType = {
     id: number
-    value: string
+    value: string 
 }
 
 type SuperSelectPropsType = DefaultSelectPropsType & {
@@ -27,13 +27,13 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
         <select
             id={restProps.id}
             className={finalSelectClassName}
-            value={value}
+            value={String(value)}
             onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                 onChangeOption?.(Number(e.currentTarget.value))
             }
         >
             {options?.map(o => (
-                <option key={o.id} value={o.id}>
+                <option key={o.id} value={String(o.id)}>
                     {o.value}
                 </option>
             ))}
