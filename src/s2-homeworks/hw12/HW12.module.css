@@ -13,6 +13,21 @@
     --background: #212A34;
 }
 
+html[data-theme='1'] {
+    --color: #000000;
+    --background: #FFFFFF;
+}
+
+html[data-theme='2'] {
+    --color: #000000;
+    --background: #DDEEFF;
+}
+
+html[data-theme='3'] {
+    --color: #FFFFFF;
+    --background: #212A34;
+}
+
 html {
     background-color: var(--background);
     color: var(--color);

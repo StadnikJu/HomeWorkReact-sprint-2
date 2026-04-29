@@ -23,12 +23,13 @@ const HW12 = () => {
     const dispatch = useDispatch();
     const themeId = useSelector((state:  AppStoreType) => state.theme.themeId);
 
-    const change = (id: number) => { // дописать функцию
+    const change = (id: number) => { 
         dispatch(changeThemeId(id));
     }
 
     useEffect(() => {
-        document.documentElement.dataset.theme = themeId + ''
+        // document.documentElement.dataset.theme = themeId + ''
+        document.documentElement.setAttribute('data-theme', String(themeId));
     }, [themeId])
 
     return (
