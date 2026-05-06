@@ -48,12 +48,12 @@ const HW13 = () => {
                 if(e.response?.status === 400) {
                     setImage(error400);
                     setCode("шибка 400!")
-                    setText("эмитация ошибки на сервере")
+                    setText('Ты не отправил success в body вообще!')
                     setInfo("Ты не отправил success в body вообще! ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!");
                 } else if (e.response?.status === 500) {
                     setCode("Код 500!")
                     setImage(error500)
-                    setText('Ты не отправил success в body вообще!')
+                    setText('эмитация ошибки на сервере')
                     setInfo('ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)');
                 } else {
                     setCode("Error!")

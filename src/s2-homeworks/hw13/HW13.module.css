@@ -39,7 +39,9 @@
 }
 
 .text {
-    display: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
 }
 .info {
     font-weight: 500;
