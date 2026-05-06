@@ -1,22 +1,52 @@
 .buttonsContainer {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 50px;
 }
 
 .responseContainer {
+    max-width: 1030px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 95px; 
+    padding-bottom: 80px;         
+    margin-bottom: 40px;
+    margin: 0 auto;
 }
 
 .imageContainer {
+
 }
 
 .image {
+
 }
 
 .textContainer{
+    max-width: 510px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .code {
+    font-weight: bold;
+    font-size: 33px;
+    color: #000;
 }
 
 .text {
+    font-weight: 500;
+    font-size: 18px;
+    color: #000;
 }
 .info {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+    margin: 0;
+    line-height: 1.4
 }

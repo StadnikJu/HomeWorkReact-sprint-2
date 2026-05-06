@@ -1,10 +1,17 @@
 .button {
+    width: auto; 
+    min-width: 100px; 
+    padding: 8px 16px; 
+    box-sizing: border-box; 
+    white-space: nowrap; 
+    word-wrap: break-word;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     border-radius: 3px;
-    padding: 5px 24px;
-    width: 129px;
-    height: 30px;
-    border: none;
     color: white;
+    border: none;
 }
 
 .disabled {
@@ -52,3 +59,7 @@
 
 .button:disabled {
 }
+
+
+ /* width: 129px;
+    height: 30px; */
