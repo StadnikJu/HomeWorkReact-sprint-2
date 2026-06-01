@@ -2,6 +2,11 @@
 }
 
 .input {
+    border: 1px solid #06c;
+    border-radius: 2px;
+    width: 468px;
+    height: 36px;
+    padding: 0 12px;
 }
 
 .inputWrapper {
