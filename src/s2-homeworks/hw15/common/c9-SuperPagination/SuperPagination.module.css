@@ -1,11 +1,30 @@
 .pagination {
+    max-width: 600px;
     display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+
+    justify-content: flex-start; 
+    align-items: center;
 }
 
 .text1 {
-
+    font-weight: 400;
+    font-size: 14px;
+    color: #0d0b0c;
+    align-self: center;
 }
 
 .text2 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #0d0b0c;
+    align-self: center;
+}
 
+.doubleArrow {
+    display: flex;
+    flex-direction: column;
+    line-height: 0;
+    gap: 2px;
 }

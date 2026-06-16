@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import downIconImg from '../../../../assets/icons/arrow-down.svg';
+import upIconImg from '../../../../assets/icons/arrow-up.svg';
+import upIconBlack from "../../../../assets/icons/icon-up-black.svg";
+import downIconBlack from "../../../../assets/icons/icon-down-black.svg";
+import s from "../c9-SuperPagination/SuperPagination.module.css";
 
-// добавить в проект иконки и импортировать
-const downIcon = '[\\/]'
-const upIcon = '[/\\]'
-const noneIcon = '[--]'
+const downIcon = downIconImg
+const upIcon = upIconImg
+const iconBlackDw = downIconBlack
+const iconBlackUp = upIconBlack
+const noneIcon = ''
 
 export type SuperSortPropsType = {
     id?: string
@@ -13,8 +19,10 @@ export type SuperSortPropsType = {
 }
 
 export const pureChange = (sort: string, down: string, up: string) => {
-    // пишет студент, sort: (click) => down (click) => up (click) => '' (click) => down ...
-    return up // исправить
+    if(sort === "") return down; 
+    else if(sort === down) return up;
+    else if (sort === up) return "";
+    else return down;
 }
 
 const SuperSort: React.FC<SuperSortPropsType> = (
@@ -29,26 +37,24 @@ const SuperSort: React.FC<SuperSortPropsType> = (
         onChange(pureChange(sort, down, up))
     }
 
-    const icon = sort === down
-        ? downIcon
-        : sort === up
-            ? upIcon
-            : noneIcon
-
     return (
         <span
             id={id + '-sort-' + value}
             onClick={onChangeCallback}
         >
-            {/*сделать иконку*/}
-            {/*<img*/}
-            {/*    id={id + '-icon-' + sort}*/}
-            {/*    src={icon}*/}
-            {/*/>*/}
-
-            {icon} {/*а это убрать*/}
+            {sort === '' ? (
+                <span className={s.doubleArrow}>
+                    <img src={upIconImg} alt="up" />
+                    <img src={downIconImg} alt="down" />
+                </span>
+            ) : (
+                <img
+                    src={sort === up ? iconBlackUp : iconBlackDw}
+                    alt="sort"
+                />
+            )}
         </span>
     )
 }
 
-export default SuperSort
+export default SuperSort;
